@@ -1,3 +1,6 @@
+# Course: CS2520
+# Assignment: Capstone Project
+
 # Connect 4
 
 from ast import Or
