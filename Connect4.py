@@ -240,7 +240,7 @@ class Connect4():
     def drop_piece(self,column):
         empty_row = self.check_next_row(column)
         if empty_row != None:
-            self.array[empty_row][column] = self.player                 #update array
+            self.array[empty_row][column] = self.player     #update array
             self.draw_circle(self.array,empty_row,column)   #update display
             self.check_win()            #check for 4 in a row
             if self.winner == 1 or self.winner == 2:
@@ -255,9 +255,9 @@ class Connect4():
                 pygame.quit()   #end pygame instance
                 quit()          #end program
 
-            #number key is pressed during game
+            #key is pressed during game
             elif event.type == pygame.KEYDOWN and self.playing:    #user pressed a thing
-                if event.key == pygame.K_1:
+                if event.key == pygame.K_1:     #column inputs
                     self.drop_piece(0)
                 if event.key == pygame.K_2:
                     self.drop_piece(1)
@@ -271,6 +271,12 @@ class Connect4():
                     self.drop_piece(5)
                 if event.key == pygame.K_7:
                     self.drop_piece(6)
+                if event.key == pygame.K_ESCAPE:    #escape to stop playing
+                    self.playing = False
+            
+            elif event.type == pygame.KEYDOWN and not self.playing:
+                if event.key == pygame.K_ESCAPE:    #double escape to stop loop
+                    self.done = True                #closes window
 
             #mouse click outside of game
             elif event.type == pygame.MOUSEBUTTONUP and not self.playing:
